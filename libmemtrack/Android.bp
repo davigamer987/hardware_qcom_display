@@ -1,0 +1,23 @@
+cc_library_shared {
+    name: "memtrack.msm8994",
+    vendor: true,
+    relative_install_path: "hw",
+    cflags: [
+        "-Wconversion",
+        "-Wall",
+        "-Werror",
+        "-Wno-sign-conversion",
+    ],
+    srcs: [
+        "memtrack_msm.c",
+        "kgsl.c",
+    ],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+    ],
+    header_libs: [
+        "libsystem_headers",
+        "libhardware_headers",
+    ],
+}

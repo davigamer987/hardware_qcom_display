@@ -1,0 +1,57 @@
+cc_library_shared {
+    name: "libqdutils",
+    defaults: ["display_defaults"],
+    header_libs: [
+        "libhardware_headers",
+        "libutils_headers",
+        "generated_kernel_headers",
+    ],
+    shared_libs: [
+        "libbinder",
+        "libqservice",
+        "libui",
+        "libhardware",
+    ],
+    cflags: [
+        "-DLOG_TAG=\"qdutils\"",
+        "-Wno-sign-conversion",
+        "-Wno-float-conversion",
+    ],
+    srcs: [
+        "profiler.cpp",
+        "mdp_version.cpp",
+        "idle_invalidator.cpp",
+        "comptype.cpp",
+        "qd_utils.cpp",
+        "cb_utils.cpp",
+        "display_config.cpp",
+        "cb_swap_rect.cpp",
+    ],
+}
+
+cc_library_shared {
+    name: "libqdMetaData",
+    defaults: ["display_defaults"],
+    cflags: [
+        "-Wno-sign-conversion",
+        "-DLOG_TAG=\"DisplayMetaData\"",
+    ],
+    srcs: ["qdMetaData.cpp","qd_utils.cpp"],
+    shared_libs: [
+        "libhardware",
+    ],
+}
+
+// Remove after WFD moves to use libqdMetaData directly
+cc_library_shared {
+    name: "libqdMetaData.system",
+    defaults: ["display_defaults"],
+    cflags: [
+        "-Wno-sign-conversion",
+        "-DLOG_TAG=\"DisplayMetaData\"",
+    ],
+    srcs: ["qdMetaData.cpp","qd_utils.cpp"],
+    shared_libs: [
+        "libhardware",
+    ],
+}

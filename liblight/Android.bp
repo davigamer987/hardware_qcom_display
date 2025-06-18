@@ -1,0 +1,8 @@
+cc_library_shared {
+    name: "lights.msm8994",
+    vendor: true,
+    relative_install_path: "hw",
+    cflags: ["-DLOG_TAG=\"qdlights\""],
+    srcs: ["lights.c"],
+    shared_libs: ["liblog"],
+}

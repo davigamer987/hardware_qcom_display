@@ -1,0 +1,16 @@
+cc_library_shared {
+    name: "libqservice",
+    defaults: ["display_defaults"],
+    cflags: [
+        "-DLOG_TAG=\"qdqservice\"",
+        "-Wno-sign-conversion",
+    ],
+    srcs: [
+        "QService.cpp",
+        "IQService.cpp",
+        "IQClient.cpp",
+    ],
+    shared_libs: [
+        "libbinder",
+    ],
+}

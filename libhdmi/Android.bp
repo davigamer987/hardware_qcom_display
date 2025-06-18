@@ -1,0 +1,14 @@
+cc_library_shared {
+    name: "libhdmi",
+    defaults: ["display_defaults"],
+    cflags: [
+        "-DLOG_TAG=\"qdhdmi\"",
+        "-Wno-float-conversion",
+    ],
+    srcs: ["hdmi.cpp"],
+    shared_libs: [
+        "liboverlay",
+        "libqdutils",
+    ],
+    header_libs: ["generated_kernel_headers"],
+}

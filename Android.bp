@@ -1,0 +1,46 @@
+// Soong configuration for the display HAL.
+
+soong_namespace {
+}
+
+cc_defaults {
+    name: "display_defaults",
+    vendor: true,
+    cflags: [
+        "-Wno-missing-field-initializers",
+        "-Wno-unused-parameter",
+    ],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libutils",
+    ],
+    header_libs: ["display_headers"],
+}
+
+cc_library_headers {
+    name: "display_headers",
+    vendor_available: true,
+    export_include_dirs: [
+        "libcopybit",
+        "libgralloc",
+        "libhdmi",
+        "libhwcomposer",
+        "liboverlay",
+        "libqdutils",
+        "libqservice",
+    ],
+    header_libs: ["libhardware_headers"],
+    export_header_lib_headers: ["libhardware_headers"],
+}
+
+cc_library_headers {
+    name: "display_intf_headers",
+    vendor_available: true,
+    export_include_dirs: [
+        "libqdutils",
+        "libgralloc",
+    ],
+    header_libs: ["libhardware_headers"],
+    export_header_lib_headers: ["libhardware_headers"],
+}
